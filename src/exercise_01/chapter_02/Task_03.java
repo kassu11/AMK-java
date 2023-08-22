@@ -13,6 +13,6 @@ public class Task_03 {
         int naula = (int)(grams / 13.28 / 32 % 20);
         double luoti = (grams / 13.28) % 32;
 
-        System.out.printf("%3d grams is %d leiviskä, %d naula, and %.2f luoti.", (int)grams, leiviskä, naula, luoti);
+        System.out.printf("%,.0f grams is %d leiviskä, %d naula, and %.2f luoti.", grams, leiviskä, naula, luoti);
     }
 }
