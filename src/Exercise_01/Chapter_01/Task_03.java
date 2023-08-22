@@ -1,4 +1,4 @@
-package Exercise_01.Chapter_01;
+package exercise_01.chapter_01;
 import java.util.Scanner;
 
 public class Task_03 {

@@ -1,4 +1,4 @@
-package Exercise_01.Chapter_01;
+package exercise_01.chapter_01;
 
 public class Task_04 { // I'm cat
     private String name;
