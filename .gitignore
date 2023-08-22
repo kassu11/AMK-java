@@ -30,3 +30,4 @@ bin/
 .idea/misc.xml
 .idea/modules.xml
 AMK-java.iml
+.idea/vcs.xml
