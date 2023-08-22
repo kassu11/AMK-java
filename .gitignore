@@ -31,3 +31,4 @@ bin/
 .idea/modules.xml
 AMK-java.iml
 .idea/vcs.xml
+.idea/uiDesigner.xml
