@@ -2,7 +2,7 @@ package demos;
 
 import java.util.Scanner;
 
-public class Demo_02 {
+public class Demo_02_switch {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
