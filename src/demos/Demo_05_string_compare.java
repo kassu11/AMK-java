@@ -2,7 +2,7 @@ package demos;
 
 import java.util.Scanner;
 
-public class Demo_05_stringCompare {
+public class Demo_05_string_compare {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
