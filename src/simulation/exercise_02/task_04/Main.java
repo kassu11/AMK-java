@@ -4,7 +4,7 @@ package simulation.exercise_02.task_04;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
-public class Task_04 {
+public class Main {
     public static void main(String[] args) {
         PriorityQueue<Event> que = new PriorityQueue<>();
 
