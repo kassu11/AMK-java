@@ -1,4 +1,4 @@
-package object_oriented_programming.exercise_01.chapter_01;
+package object_oriented_programming.week_01.chapter_01;
 import java.util.Scanner;
 
 public class Task_03 {
