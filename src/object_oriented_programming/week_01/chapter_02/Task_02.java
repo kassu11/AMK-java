@@ -14,6 +14,6 @@ public class Task_02 {
 
 		double hypotenuse = Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2));
 
-		System.out.println(hypotenuse);
+		System.out.printf("%.2f", hypotenuse);
 	}
 }
