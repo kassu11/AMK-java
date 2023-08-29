@@ -1,6 +1,6 @@
 package simulation.exercise_01.task_03;
 
-public class Customer_test {
+public class Run_simulation {
     public static void main(String[] args) {
         for (int i = 0; i < 10; i++) {
             Customer test = new Customer((long)(Math.random() * 100));

@@ -1,10 +1,9 @@
 package simulation.exercise_01.task_04;
 
 import java.util.LinkedList;
-import java.util.Objects;
 import java.util.Scanner;
 
-public class Customer_test {
+public class Run_simulation {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         char answer;
