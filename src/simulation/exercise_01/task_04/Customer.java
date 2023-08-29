@@ -1,13 +1,13 @@
-package simulation.exercise_01.task_03;
+package simulation.exercise_01.task_04;
 
 public class Customer {
     private static int nextId = 1;
     final private int id;
     long startTime, endTime;
 
-    public Customer(long time) {
+    public Customer() {
         this.id = nextId++;
-        this.startTime = time;
+        this.startTime = System.nanoTime();
     }
 
     public int getId() {
