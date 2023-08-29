@@ -1,4 +1,4 @@
-package exercise_01.chapter_02;
+package object_oriented_programming.exercise_01.chapter_02;
 
 import java.util.Scanner;
 
