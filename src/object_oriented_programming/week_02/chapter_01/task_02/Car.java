@@ -1,4 +1,4 @@
-package object_oriented_programming.week_02.task_02;
+package object_oriented_programming.week_02.chapter_01.task_02;
 
 /* Define a class Car (convention capitalizes class names).
  * Car is public (as classes usually are, more on this later).

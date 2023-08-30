@@ -1,4 +1,4 @@
-package object_oriented_programming.week_02.task_03;
+package object_oriented_programming.week_02.chapter_01.task_03;
 
 public class CoffeeMaker {
     private String type;
