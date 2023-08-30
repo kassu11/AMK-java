@@ -7,10 +7,11 @@ import java.util.Map;
 
 public class GroceryListManager {
     private ArrayList<String> groceryList = new ArrayList<>();
+    private Map<String, Double> costs = new HashMap<>();
 
     public static void main(String[] args) {
         GroceryListManager listManager = new GroceryListManager();
-        Map<String, Double> costs = new HashMap<>();
+
         Scanner scanner = new Scanner(System.in);
         char answer;
 
@@ -20,7 +21,8 @@ public class GroceryListManager {
             System.out.println("2. Remove item");
             System.out.println("3. Display list");
             System.out.println("4. Search item");
-            System.out.println("5. Exit");
+            System.out.println("5. Calculate total cost");
+            System.out.println("6. Exit");
             System.out.print("Enter your choice: ");
             answer = scanner.next().charAt(0);
 
@@ -38,12 +40,19 @@ public class GroceryListManager {
             } else if (answer == '4') {
                 System.out.print("Enter item to search: ");
                 System.out.println(listManager.checkItem(scanner.next()) ? "Item found" : "Item not found");
+            } else if (answer == '5') {
+                System.out.printf("Total cost: %.2f\n", listManager.calculateTotalCost());
+            } else if (answer == '6') {
+                System.out.println("Exiting...");
+            } else {
+                System.out.println("Invalid choice");
             }
-        } while(answer != '5');
+        } while(answer != '6');
     }
 
     public void addItem(String item, double cost) {
         this.groceryList.add(item);
+        this.costs.put(item, cost);
     }
 
     public void removeItem(String item) {
@@ -61,6 +70,15 @@ public class GroceryListManager {
             System.out.printf("%d. %s\n", i + 1, this.groceryList.get(i));
         }
         System.out.println();
+    }
+
+    public double calculateTotalCost() {
+        double sum = 0;
+        for(double value : this.costs.values()) {
+            sum += value;
+        }
+
+        return sum;
     }
 
     public boolean checkItem(String item) {
