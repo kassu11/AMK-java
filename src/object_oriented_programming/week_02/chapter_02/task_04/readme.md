@@ -1,6 +1,7 @@
-# Task 3: Categorizing Items
+# Task 4: Quantity Tracking
 
-Enhance the `GroceryListManager` class to support categorizing items. Each item should belong to a category (e.g., "Fruits", "Dairy", "Bakery"). Add the following methods:
+Extend the `GroceryListManager` class to track the quantity of each item in the list. Add the following methods:
 
-- `addItemWithCategory(String item, String category)`: This method should add the given item to the grocery list along with its category.
-- `displayByCategory(String category)`: This method should display all items in the specified category.
+- `addItemWithQuantity(String item, int quantity)`: This method should add the given item along with its quantity to the grocery list.
+- `updateQuantity(String item, int newQuantity)`: This method should update the quantity of the specified item in the grocery list.
+- `displayAvailableItems()`: This method should display items along with their quantities that have a positive quantity.
