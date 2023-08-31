@@ -25,10 +25,6 @@ public class Task_02 {
         for(int i = 0; i < size; i++) {
             int sum = 0;
             for(int j = i; j < size; j++) {
-                if (i == 0 && j == 0) {
-                    maxValue = array[0];
-                }
-
                 sum += array[j];
 
                 if(sum > maxValue) {
