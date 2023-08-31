@@ -17,11 +17,13 @@ public class Car {
     /* This is the method (constructor) called when a new instance of Car is created (with new).
      * Constructors may also have arguments.
      */
-    public Car(String typeName) {
+    public Car(String typeName, float topSpeed, float tank) {
         speed = 0; gasolineLevel = 0;
         this.typeName = typeName;   // this refers to the object itself.
         // The reference is useful if you want to use parameter names that are
         // identical to instance variable names (and for more, later on)
+        this.topSpeed = topSpeed;
+        this.tank = tank;
     }
 
     /* Implementations of some methods.
@@ -53,13 +55,13 @@ public class Car {
     }
 
     public void setTankLimit(int num) {
-        tank = num;
+        this.tank = num;
     }
 
     public void setTopSpeed(int num) {
-        topSpeed = num;
+        this.topSpeed = num;
     }
     float getGasolineLevel() {
-        return gasolineLevel;
+        return this.gasolineLevel;
     }
 }
