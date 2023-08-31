@@ -19,7 +19,7 @@ public class Task_02 {
             array[i] = amount;
         }
 
-        int maxValue = 0;
+        int maxValue = array[0];
         int[] indexes = {0, 0};
 
         for(int i = 0; i < size; i++) {
