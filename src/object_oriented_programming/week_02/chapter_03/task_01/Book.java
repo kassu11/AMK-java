@@ -3,9 +3,9 @@ package object_oriented_programming.week_02.chapter_03.task_01;
 public class Book {
     private String author;
     private String title;
-    private String publicationYear;
+    private int publicationYear;
 
-    public Book(String author, String title, String publicationYear) {
+    public Book(String author, String title, int publicationYear) {
         this.author = author;
         this.title = title;
         this.publicationYear = publicationYear;
@@ -19,7 +19,7 @@ public class Book {
         return this.title;
     }
 
-    public String getPublicationYear() {
+    public int getPublicationYear() {
         return this.publicationYear;
     }
 }
