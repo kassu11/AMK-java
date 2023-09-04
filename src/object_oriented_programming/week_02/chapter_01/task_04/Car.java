@@ -62,7 +62,7 @@ public class Car {
         this.cruseControlSpeed = num;
     }
 
-    public void turnOnOfCroiseControl() {
+    public void turnOnOfCruiseControl() {
         this.cruseControlOn = !this.cruseControlOn;
         if (this.cruseControlSpeed > this.topSpeed || this.cruseControlSpeed < 0) {
             return;

@@ -21,6 +21,6 @@ public class CarDriver {
         System.out.print("\n\n");
 
         myCar.setCruiseControlSpeed(69);
-        myCar.turnOnOfCroiseControl();
+        myCar.turnOnOfCruiseControl();
     }
 }
