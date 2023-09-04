@@ -16,6 +16,10 @@ public class Arrival {
         return this.time;
     }
 
+    public void addToList(EventList list) {
+        list.addToEventList(this);
+    }
+
     @Override
     public String toString() {
         return Integer.toString(this.time);
