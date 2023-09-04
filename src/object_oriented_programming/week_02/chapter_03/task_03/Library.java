@@ -3,8 +3,8 @@ package object_oriented_programming.week_02.chapter_03.task_03;
 import java.util.ArrayList;
 
 public class Library {
-    private ArrayList<Book> books = new ArrayList<>();
-    private ArrayList<Book> borrowBook = new ArrayList<>();
+	private ArrayList<Book> books = new ArrayList<>();
+    private ArrayList<Book> borrowedBooks = new ArrayList<>();
 
 	public void addBook(Book book) {
 		this.books.add(book);
@@ -28,16 +28,27 @@ public class Library {
 	public void borrowBook(String title) {
 		for(int i = 0; i < this.books.size(); i++) {
 			if (this.books.get(i).getTitle().equals(title)) {
-				this.borrowBook.add(this.books.get(i));
+				this.borrowedBooks.add(this.books.get(i));
 				this.books.remove(i);
+				System.out.println("Book borrowed successfully!\n");
 				return;
 			}
 		}
 	}
 
+	public void displayBorrowedBooks() {
+		for (Book book : this.borrowedBooks) {
+			System.out.printf("Title: \"%s\", Publication year: \"%d\", Author: \"%s\"\n", book.getTitle(), book.getPublicationYear(), book.getAuthor());
+		}
+	}
+
+	public ArrayList<Book> getBorrowedBooks() {
+		return this.borrowedBooks;
+	}
+
 	public void returnBook(Book book) {
 		this.books.add(book);
-		this.borrowBook.remove(book);
+		this.borrowedBooks.remove(book);
 	}
 
 	public boolean isBookAvailable(String title) {
