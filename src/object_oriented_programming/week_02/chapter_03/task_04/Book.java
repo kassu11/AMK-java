@@ -6,7 +6,7 @@ public class Book {
     private String author;
     private String title;
     private int publicationYear;
-    private double rating;
+    private double rating = 0.0;
     private ArrayList<String> reviews = new ArrayList<>();
 
     public Book(String author, String title, int publicationYear) {
