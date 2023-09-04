@@ -5,11 +5,11 @@ import java.util.ArrayList;
 public class Book {
     private String author;
     private String title;
-    private String publicationYear;
+    private int publicationYear;
     private double rating;
     private ArrayList<String> reviews = new ArrayList<>();
 
-    public Book(String author, String title, String publicationYear) {
+    public Book(String author, String title, int publicationYear) {
         this.author = author;
         this.title = title;
         this.publicationYear = publicationYear;
@@ -23,7 +23,7 @@ public class Book {
         return this.title;
     }
 
-    public String getPublicationYear() {
+    public int getPublicationYear() {
         return this.publicationYear;
     }
 
