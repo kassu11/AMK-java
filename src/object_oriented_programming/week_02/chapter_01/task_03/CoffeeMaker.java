@@ -8,14 +8,23 @@ public class CoffeeMaker {
     public void changeAmount(int num) {
         if(num < 10 || num > 80 || !this.state) return;
         this.amount = num;
+        System.out.println("Amount of coffee: " + this.amount + " ml");
     }
 
     public void changeType(String newType) {
-        if (newType.compareTo("normal") != 0 && newType.compareTo("espresso") != 0) return;
-        this.type = newType;
+        if(!this.state) return;
+        if(newType.equals("normal") || newType.equals("espresso")) {
+            this.type = newType;
+            System.out.println("Type of coffee: " + this.type);
+        }
     }
 
     public void onOff() {
         this.state = !this.state;
+        System.out.println("Coffee maker is " + (this.state ? "on" : "off"));
+    }
+
+    public String getType() {
+        return this.type;
     }
 }

@@ -14,7 +14,7 @@ public class Task_03 {
 
         int[] ageSums = new int[32];
 
-        for(int i = 0; i < 1000; i++) {
+        for(int i = 0; i < 10000; i++) {
             double r = Math.random();
             double sum = 0.0;
             for(double[] age: ages) {
@@ -28,7 +28,8 @@ public class Task_03 {
         }
 
         for(int i = 15; i < ageSums.length; i++) {
-            System.out.printf("Age %d count is: %d\n", i, ageSums[i]);
+            if (ageSums[i] == 0) continue;
+            System.out.printf("Age %d count is: %.2f\n", i, ageSums[i] / 10000.0);
         }
     }
 }
