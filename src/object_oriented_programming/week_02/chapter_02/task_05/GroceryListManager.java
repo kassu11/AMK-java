@@ -46,6 +46,6 @@ public class GroceryListManager {
     }
 
     public void selectShoppingList(String name) {
-        this.lists.get(name).select();
+        if (this.lists.containsKey(name)) this.lists.get(name).select();
     }
 }
