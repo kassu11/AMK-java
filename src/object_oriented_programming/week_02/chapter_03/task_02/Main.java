@@ -19,16 +19,17 @@ public class Main {
 
             System.out.print("Enter your answer: ");
             answer = scanner.nextInt();
+            scanner.nextLine();
 
             System.out.println();
 
             if (answer == 1) {
                 System.out.print("Enter book title: ");
-                String title = scanner.next();
+                String title = scanner.nextLine();
                 System.out.print("Enter book author: ");
-                String author = scanner.next();
+                String author = scanner.nextLine();
                 System.out.print("Enter book publication year: ");
-                String publicationYear = scanner.next();
+                int publicationYear = scanner.nextInt();
 
                 library.addBook(new Book(author, title, publicationYear));
                 System.out.println("Book added successfully!\n");
@@ -38,7 +39,7 @@ public class Main {
                 System.out.println();
             } else if (answer == 3) {
                 System.out.print("Enter author name: ");
-                String author = scanner.next();
+                String author = scanner.nextLine();
                 library.findBooksByAuthor(author);
                 System.out.println();
             }
