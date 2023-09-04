@@ -6,9 +6,9 @@ public class Book {
     private String author;
     private String title;
     private int publicationYear;
-    private double rating = 0;
-    private User borrowedBy;
+    private double rating = 0.0;
     private ArrayList<String> reviews = new ArrayList<>();
+    private User borrowedBy;
 
     public Book(String author, String title, int publicationYear) {
         this.author = author;
@@ -46,5 +46,9 @@ public class Book {
 
     public void setBorrowedBy(User user) {
         this.borrowedBy = user;
+    }
+
+    public User getBorrowedBy() {
+        return this.borrowedBy;
     }
 }

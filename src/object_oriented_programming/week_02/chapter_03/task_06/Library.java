@@ -3,9 +3,9 @@ package object_oriented_programming.week_02.chapter_03.task_06;
 import java.util.ArrayList;
 
 public class Library {
-    private ArrayList<Book> books = new ArrayList<>();
-    private ArrayList<Book> borrowBook = new ArrayList<>();
-    private ArrayList<User> users = new ArrayList<>();
+	private ArrayList<Book> books = new ArrayList<>();
+    private ArrayList<Book> borrowedBooks = new ArrayList<>();
+	private ArrayList<User> users = new ArrayList<>();
 
 	public void addBook(Book book) {
 		this.books.add(book);
@@ -28,22 +28,33 @@ public class Library {
 
 	public void borrowBook(String title, User user) {
 		for(int i = 0; i < this.books.size(); i++) {
-			if (this.books.get(i).getTitle().equals(title)) {
-				this.borrowBook.add(this.books.get(i));
-				user.addToBorrowed(this.books.get(i));
+			Book book = this.books.get(i);
+			if (book.getTitle().equals(title)) {
+				this.borrowedBooks.add(book);
+				user.addToBorrowed(book);
+				book.setBorrowedBy(user);
 				this.books.remove(i);
+				System.out.println("Book borrowed successfully!\n");
 				return;
 			}
 		}
 	}
 
-	public void returnBook(Book book) {
-		this.books.add(book);
-		this.borrowBook.remove(book);
+	public void displayBorrowedBooks() {
+		for (Book book : this.borrowedBooks) {
+			System.out.printf("Title: \"%s\", Publication year: \"%d\", Author: \"%s\"\n", book.getTitle(), book.getPublicationYear(), book.getAuthor());
+		}
 	}
 
-	public ArrayList<User> getUsers() {
-		return this.users;
+	public ArrayList<Book> getBorrowedBooks() {
+		return this.borrowedBooks;
+	}
+
+	public void returnBook(Book book) {
+		this.books.add(book);
+		book.getBorrowedBy().removeBorrowedBook(book);
+		book.setBorrowedBy(null);
+		this.borrowedBooks.remove(book);
 	}
 
 	public boolean isBookAvailable(String title) {
@@ -59,12 +70,14 @@ public class Library {
         double sum = 0;
         int count = 0;
         for (Book book : this.books) {
-            if (book.getRating() != 0) {
+			System.out.println(book.getRating());
+            if (book.getRating() > 0) {
                 sum += book.getRating();
                 count++;
             }
         }
 
+		if (count == 0) return 0.0;
         return sum / count;
     }
 
@@ -81,5 +94,15 @@ public class Library {
 
 	public void addUser(User user) {
 		this.users.add(user);
+	}
+
+	public ArrayList<User> getUsers() {
+		return this.users;
+	}
+
+	public void displayUsers() {
+		for (User user : this.users) {
+			System.out.printf("Name: \"%s\", Age: \"%d\"\n", user.getName(), user.getAge());
+		}
 	}
 }

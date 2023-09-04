@@ -28,4 +28,8 @@ public class User {
     public void removeBorrowedBook(Book book) {
         this.borrowedBooks.remove(book);
     }
+
+    public ArrayList<Book> getBorrowedBooks() {
+        return this.borrowedBooks;
+    }
 }
