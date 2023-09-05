@@ -1,7 +1,3 @@
-# Task 5: Library Statistics
+# Task 6: Library Users
 
-Implement methods in the `Library` class to calculate and display statistics about the books in the library:
-
-- `getAverageBookRating()`: This method should calculate and return the average rating of all books in the library.
-
-- `getMostReviewedBook()`: This method should return the book with the highest number of reviews.
+Create a `User` class with attributes like name, age, and a list of borrowed books. Modify the `Library` class to keep track of library users and their borrowed books.
