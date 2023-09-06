@@ -14,5 +14,7 @@ public class ShapeCalculator {
         }
 
         System.out.println("Is compatible: " + new Rectangle(2, 2).isCompatible((new Rectangle(4, 2))));
+        System.out.println("Is compatible: " + new Circle(2).isCompatible((new Circle(4))));
+        System.out.println("Is compatible: " + new Triangle(2, 2).isCompatible((new Triangle(4, 2))));
     }
 }
