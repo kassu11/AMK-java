@@ -1,4 +1,4 @@
-package demos.demo_12;
+package demos.demo_12_read_write_file;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
