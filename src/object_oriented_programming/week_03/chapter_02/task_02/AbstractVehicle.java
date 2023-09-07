@@ -1,7 +1,5 @@
 package object_oriented_programming.week_03.chapter_02.task_02;
 
-import object_oriented_programming.week_03.chapter_02.task_01.Vehicle;
-
 abstract class AbstractVehicle implements Vehicle {
     private VehicleTypes type;
     private String fuel;
