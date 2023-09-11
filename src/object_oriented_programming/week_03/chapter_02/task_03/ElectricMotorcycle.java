@@ -1,10 +1,10 @@
 package object_oriented_programming.week_03.chapter_02.task_03;
 
-public class ElectricCar extends Car implements ElectricVehicle {
+public class ElectricMotorcycle extends Motorcycle implements ElectricVehicle {
     private double chargeAmount = 0.0;
     private double maxCharge = 120.0;
 
-    public ElectricCar(String color, double maxCharge) {
+    public ElectricMotorcycle(String color, double maxCharge) {
         super(color);
         this.maxCharge = maxCharge;
     }
