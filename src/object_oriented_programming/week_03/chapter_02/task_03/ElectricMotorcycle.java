@@ -13,4 +13,9 @@ public class ElectricMotorcycle extends Motorcycle implements ElectricVehicle {
     public void charge() {
         System.out.println(this.getType() + " is charging");
     }
+
+    @Override
+    public String getFuel() {
+        return "Electricity";
+    }
 }
