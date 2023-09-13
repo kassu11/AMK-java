@@ -1,4 +1,4 @@
-package object_oriented_programming.week_04.chapter_02.task_02;
+package object_oriented_programming.week_04.chapter_02.task_01;
 
 public class Calculator {
     //  write a temporary main method that creates an instance of the Calculator class and uses it to calculate the sum of a few integers.
