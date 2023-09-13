@@ -1,64 +1,59 @@
 package object_oriented_programming.week_04.chapter_02.task_01;
 
+// In a new project, write a `Calculator` class that has the ability to sum positive integers. A negative integer should throw an exception.
+
+// The class acts as the model in the MVC pattern. It should have the following methods:
+// - A method that resets the calculator to zero.
+// - A method that adds an integer to the calculator.
+// - A method that returns the current value of the calculator.
+
+// In addition, write a temporary main method that creates an instance of the `Calculator` class and uses it to calculate the sum of a few integers.
+
+// Explore various way in which you can use GitHub Copilot to write the sum method. For example, try the following:
+
+// - Write the method signature and let GitHub Copilot write the method body.
+// - Write the method signature and the first line of the method body, and let GitHub Copilot write the rest. Then, modify the code to use a different loop structure (while instead of for, or vice versa) in the body.
+// - Write a comment where you describe the method in English, letting GitHub Copilot write the method body based on the comment.
+
 public class Calculator {
-    //  write a temporary main method that creates an instance of the Calculator class and uses it to calculate the sum of a few integers.
+    private int sum;
+
     public static void main(String[] args) {
         Calculator calculator = new Calculator();
-        System.out.println(calculator.add(1, 2, 3, 4, 5));
-        System.out.println(calculator.subtract(1, 2, 3, 4, 5));
-        System.out.println(calculator.multiply(1, 2, 3, 4, 5));
-        System.out.println(calculator.divide(1, 2, 3, 4, 5));
+
+        // Test the methods
+        System.out.println(calculator.getSum());
+        calculator.add(1);
+        System.out.println(calculator.getSum());
+        calculator.add(2);
+        System.out.println(calculator.getSum());
+        calculator.add(3);
+        System.out.println(calculator.getSum());
+        calculator.add(4);
+        System.out.println(calculator.getSum());
+        calculator.add(5);
+        System.out.println(calculator.getSum());
+        calculator.reset();
+        System.out.println(calculator.getSum());
     }
 
-    public static int add(int a, int b) {
-        return a + b;
+    public Calculator() {
+        this.sum = 0;
     }
 
-    public static int add(int... numbers) {
-        int sum = 0;
-        for (int number : numbers) {
-            sum += number;
+    public void reset() {
+        this.sum = 0;
+    }
+
+    public void add(int number) {
+        if (number < 0) {
+            throw new IllegalArgumentException("The number must be positive.");
         }
 
-        return sum;
+        this.sum += number;
     }
 
-    public static int subtract(int a, int b) {
-        return a - b;
-    }
-
-    public static int subtract(int... numbers) {
-        int difference = numbers[0];
-        for (int i = 1; i < numbers.length; i++) {
-            difference -= numbers[i];
-        }
-
-        return difference;
-    }
-
-    public static int multiply(int a, int b) {
-        return a * b;
-    }
-
-    public static int multiply(int... numbers) {
-        int product = 1;
-        for (int number : numbers) {
-            product *= number;
-        }
-
-        return product;
-    }
-
-    public static int divide(int a, int b) {
-        return a / b;
-    }
-
-    public static int divide(int... numbers) {
-        int quotient = numbers[0];
-        for (int i = 1; i < numbers.length; i++) {
-            quotient /= numbers[i];
-        }
-
-        return quotient;
+    public int getSum() {
+        return this.sum;
     }
 }
