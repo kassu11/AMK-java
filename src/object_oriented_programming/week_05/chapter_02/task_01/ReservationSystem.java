@@ -18,8 +18,19 @@ public class ReservationSystem {
         }
 
         for(Reservation reservation : reservationSystem.getThreads()) {
-            reservation.start();
+            reservation.runReservation();
         }
+
+        for(Reservation reservation : reservationSystem.getThreads()) {
+            try {
+                reservation.join();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        System.out.println("Done.");
+        System.out.println("Ticket count: " + ticketCount);
     }
 
     public ArrayList<Reservation> getThreads() {

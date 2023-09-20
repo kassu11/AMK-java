@@ -14,7 +14,9 @@ public class Reservation extends Thread {
         this.revervationNumber = this.reservationSystem.getThreads().size() + 1;
 
         this.reservationSystem.getThreads().add(this);
+    }
 
+    public void runReservation() {
         for(Reservation thread : this.reservationSystem.getThreads()) {
             if(thread != this) {
                 try {
@@ -24,6 +26,8 @@ public class Reservation extends Thread {
                 }
             }
         }
+
+        this.start();
     }
 
     public void run() {
