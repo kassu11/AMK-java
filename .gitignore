@@ -32,3 +32,4 @@ bin/
 AMK-java.iml
 .idea/vcs.xml
 .idea/uiDesigner.xml
+/target/
