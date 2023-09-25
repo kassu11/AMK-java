@@ -16,61 +16,18 @@ import javafx.application.Application;
 import object_oriented_programming.week_06.chapter_02.task_01.controller.CurrencyController;
 
 public class CurrencyView extends Application {
+    private final ToggleGroup startGroup = new ToggleGroup();
+    private final ToggleGroup endGroup = new ToggleGroup();
     private final TextField startCurrencyTextField = new TextField();
     private final TextField endCurrencyTextField = new TextField();
+    private final String[] currencies = {"USD", "EUR", "JPY", "GBP"};
 
     private CurrencyController controller;
 
     public void start(Stage stage) {
         stage.setTitle("Dictionary");
-
-        String[] currencies = {"USD", "EUR", "JPY", "GBP"};
-
-        final ToggleGroup startGroup = new ToggleGroup();
-        VBox startingCurrencyContainer = new VBox();
-        startingCurrencyContainer.getChildren().add(new Label("Choose a starting currency: "));
-
-        for(String currency : currencies) {
-            RadioButton radioButton = new RadioButton(currency);
-            radioButton.setUserData(currency);
-            radioButton.setToggleGroup(startGroup);
-            radioButton.setSelected(true);
-            startingCurrencyContainer.getChildren().add(radioButton);
-        }
-
-        final ToggleGroup endGroup = new ToggleGroup();
-        VBox endingCurrencyContainer = new VBox();
-        endingCurrencyContainer.getChildren().add(new Label("Choose a conversion currency: "));
-
-        for(String currency : currencies) {
-            RadioButton radioButton = new RadioButton(currency);
-            radioButton.setUserData(currency);
-            radioButton.setToggleGroup(endGroup);
-            radioButton.setSelected(true);
-            endingCurrencyContainer.getChildren().add(radioButton);
-        }
-
-        startGroup.selectedToggleProperty().addListener(test -> {
-            String value = startGroup.getSelectedToggle().getUserData().toString();
-            if (value.equals("Home")) {
-                System.out.println("Home");
-            } else if (value.equals("Calendar")) {
-                System.out.println("Calendar");
-            } else if (value.equals("Contacts")) {
-                System.out.println("Contacts");
-            }
-        });
-
-        endGroup.selectedToggleProperty().addListener(test -> {
-            String value = endGroup.getSelectedToggle().getUserData().toString();
-            if (value.equals("Home")) {
-                System.out.println("Home");
-            } else if (value.equals("Calendar")) {
-                System.out.println("Calendar");
-            } else if (value.equals("Contacts")) {
-                System.out.println("Contacts");
-            }
-        });
+        VBox startingCurrencyContainer = currencySettings(new VBox(), "Choose a starting currency: ", startGroup);
+        VBox endingCurrencyContainer = currencySettings(new VBox(), "Choose a conversion currency: ", endGroup);
 
         HBox currencyContainer = new HBox();
         currencyContainer.setAlignment(Pos.CENTER);
@@ -115,6 +72,32 @@ public class CurrencyView extends Application {
 
     public void init() {
         controller = new CurrencyController(this);
+    }
+
+    public VBox currencySettings(VBox container, String header, ToggleGroup group) {
+        container.getChildren().add(new Label(header));
+
+        for(String currency : currencies) {
+            RadioButton radioButton = new RadioButton(currency);
+            radioButton.setUserData(currency);
+            radioButton.setToggleGroup(group);
+            radioButton.setSelected(true);
+            container.getChildren().add(radioButton);
+        }
+
+        group.selectedToggleProperty().addListener(test -> {
+            String value = group.getSelectedToggle().getUserData().toString();
+            System.out.println(value);
+            if (value.equals("Home")) {
+                System.out.println("Home");
+            } else if (value.equals("Calendar")) {
+                System.out.println("Calendar");
+            } else if (value.equals("Contacts")) {
+                System.out.println("Contacts");
+            }
+        });
+
+        return container;
     }
 
 //    public void searchAnswer(String answer) {
