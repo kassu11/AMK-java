@@ -26,9 +26,9 @@ public class CurrencyView extends Application {
     private CurrencyController controller;
 
     public void start(Stage stage) {
-        stage.setTitle("Dictionary");
-        VBox startingCurrencyContainer = currencySettings(new VBox(), "Choose a starting currency: ", startGroup);
-        VBox endingCurrencyContainer = currencySettings(new VBox(), "Choose a conversion currency: ", endGroup);
+        stage.setTitle("Currency Converter.");
+        VBox startingCurrencyContainer = currencySettings(new VBox(), "Choose a source currency: ", startGroup);
+        VBox endingCurrencyContainer = currencySettings(new VBox(), "Choose a target currency: ", endGroup);
 
         HBox currencyContainer = new HBox();
         currencyContainer.setAlignment(Pos.CENTER);
@@ -44,7 +44,6 @@ public class CurrencyView extends Application {
         Label endCurrencyLabel = new Label("Conversion currency: ");
         Button convertButton = new Button("Convert");
 
-        errorLabel.setTextFill(javafx.scene.paint.Color.RED);
         gridPane.add(startCurrencyLabel, 0, 0);
         gridPane.add(startCurrencyTextField, 0, 1);
         gridPane.add(endCurrencyLabel, 2, 0);
@@ -71,12 +70,27 @@ public class CurrencyView extends Application {
             }
         });
 
+        VBox helpContainer = new VBox();
+        helpContainer.setSpacing(5);
+        helpContainer.paddingProperty().setValue(new Insets(16));
+        Label helpHeader = new Label("How to Use the Currency Converter:");
+        helpHeader.getStyleClass().add("help-header");
+        helpContainer.getChildren().addAll(
+                helpHeader,
+                new Label("1. Input the amount you want to convert in the first field."),
+                new Label("2. Use the radio button menus to choose your source and target currencies."),
+                new Label("3. Click the \"Convert\" button to see the converted amount in the second field.")
+        );
+
         VBox mainContainer = new VBox();
         mainContainer.setSpacing(25);
         mainContainer.paddingProperty().setValue(new Insets(16));
-        mainContainer.getChildren().addAll(currencyContainer, errorLabel, gridPane);
+        mainContainer.getChildren().addAll(currencyContainer, errorLabel, gridPane, helpContainer);
+        errorLabel.getStyleClass().add("error-label");
+
 
         Scene scene = new Scene(mainContainer);
+        scene.getStylesheets().add("main.css");
         stage.setScene(scene);
         stage.show();
     }

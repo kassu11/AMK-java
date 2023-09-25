@@ -13,8 +13,9 @@ public class CurrencyController {
 
     public void convert(double amount, String from, String to) {
         double result = currency.convert(amount, from, to);
-        view.convertAnswer(String.format("%,.2f", result));
+        view.convertAnswer(currency.format(result, to));
     }
+
     public static void main(String[] args) {
         CurrencyView.launch(CurrencyView.class);
     }
