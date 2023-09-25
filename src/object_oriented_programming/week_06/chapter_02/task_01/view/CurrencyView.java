@@ -20,6 +20,7 @@ public class CurrencyView extends Application {
     private final ToggleGroup endGroup = new ToggleGroup();
     private final TextField startCurrencyTextField = new TextField();
     private final TextField endCurrencyTextField = new TextField();
+    private final Label errorLabel = new Label();
     private final String[] currencies = {"USD", "EUR", "JPY", "GBP"};
 
     private CurrencyController controller;
@@ -43,27 +44,37 @@ public class CurrencyView extends Application {
         Label endCurrencyLabel = new Label("Conversion currency: ");
         Button convertButton = new Button("Convert");
 
+        errorLabel.setTextFill(javafx.scene.paint.Color.RED);
         gridPane.add(startCurrencyLabel, 0, 0);
         gridPane.add(startCurrencyTextField, 0, 1);
         gridPane.add(endCurrencyLabel, 2, 0);
         gridPane.add(endCurrencyTextField, 2, 1);
         gridPane.add(convertButton, 1, 1);
 
-//        searchButton.setOnAction(event -> {
-//            controller.getTranslation(searchTextField.getText());
-//        });
+        convertButton.setOnAction(event -> {
+            String startCurrency = startGroup.getSelectedToggle().getUserData().toString();
+            String endCurrency = endGroup.getSelectedToggle().getUserData().toString();
+            String startValue = startCurrencyTextField.getText();
+            if (startValue.isEmpty()) {
+                System.out.println("The search field is empty");
+                errorLabel.setText("The search field is empty");
+                return;
+            }
 
-
-//        addMeaningButton.setOnAction(event -> {
-//            controller.addTranslation(addWordTextField.getText(), addMeaningTextField.getText());
-//        });
-
-
+            try {
+                double startingValue = Double.parseDouble(startValue);
+                controller.convert(startingValue, startCurrency, endCurrency);
+                errorLabel.setText("");
+            } catch (NumberFormatException e) {
+                System.out.println("The search field is not a number");
+                errorLabel.setText("The search field is not a number");
+            }
+        });
 
         VBox mainContainer = new VBox();
-        mainContainer.setSpacing(50);
+        mainContainer.setSpacing(25);
         mainContainer.paddingProperty().setValue(new Insets(16));
-        mainContainer.getChildren().addAll(currencyContainer, gridPane);
+        mainContainer.getChildren().addAll(currencyContainer, errorLabel, gridPane);
 
         Scene scene = new Scene(mainContainer);
         stage.setScene(scene);
@@ -77,7 +88,7 @@ public class CurrencyView extends Application {
     public VBox currencySettings(VBox container, String header, ToggleGroup group) {
         container.getChildren().add(new Label(header));
 
-        for(String currency : currencies) {
+        for (String currency : currencies) {
             RadioButton radioButton = new RadioButton(currency);
             radioButton.setUserData(currency);
             radioButton.setToggleGroup(group);
@@ -85,26 +96,10 @@ public class CurrencyView extends Application {
             container.getChildren().add(radioButton);
         }
 
-        group.selectedToggleProperty().addListener(test -> {
-            String value = group.getSelectedToggle().getUserData().toString();
-            System.out.println(value);
-            if (value.equals("Home")) {
-                System.out.println("Home");
-            } else if (value.equals("Calendar")) {
-                System.out.println("Calendar");
-            } else if (value.equals("Contacts")) {
-                System.out.println("Contacts");
-            }
-        });
-
         return container;
     }
 
-//    public void searchAnswer(String answer) {
-//        searchAnswer.setText(answer);
-//    }
-
-//    public void addingStatusLabel(String status) {
-//        addingStatusLabel.setText(status);
-//    }
+    public void convertAnswer(String answer) {
+        endCurrencyTextField.setText(answer);
+    }
 }

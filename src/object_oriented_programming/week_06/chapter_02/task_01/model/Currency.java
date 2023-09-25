@@ -4,13 +4,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Currency {
-    private Map<String, String> dictionary = new HashMap<>();
+    private Map<String, Double> currencies = new HashMap<>();
 
-    public void addWord(String word, String translation) {
-        dictionary.put(word, translation);
+    public Currency() {
+        currencies.put("USD", 1.0);
+        currencies.put("EUR", 0.94);
+        currencies.put("JPY", 148.79);
+        currencies.put("GBP", 0.82);
     }
 
-    public String getTranslation(String word) {
-        return dictionary.get(word);
+    public double convert(double amount, String from, String to) {
+        return amount / currencies.get(from) * currencies.get(to);
     }
 }
