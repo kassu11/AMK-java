@@ -75,6 +75,7 @@ public class CurrencyView extends Application {
         helpContainer.paddingProperty().setValue(new Insets(16));
         Label helpHeader = new Label("How to Use the Currency Converter:");
         helpHeader.getStyleClass().add("help-header");
+        helpContainer.setAlignment(Pos.CENTER);
         helpContainer.getChildren().addAll(
                 helpHeader,
                 new Label("1. Input the amount you want to convert in the first field."),
