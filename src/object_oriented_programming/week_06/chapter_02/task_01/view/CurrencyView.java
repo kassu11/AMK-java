@@ -1,13 +1,10 @@
 package object_oriented_programming.week_06.chapter_02.task_01.view;
 
 
-import javafx.geometry.HPos;
-import javafx.geometry.Orientation;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.geometry.Pos;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -91,7 +88,7 @@ public class CurrencyView extends Application {
 
 
         Scene scene = new Scene(mainContainer);
-        scene.getStylesheets().add("main.css");
+        scene.getStylesheets().add("week6/chapter-2.css");
         stage.setScene(scene);
         stage.show();
     }
