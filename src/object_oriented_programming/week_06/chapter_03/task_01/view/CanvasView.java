@@ -29,8 +29,12 @@ public class CanvasView extends Application {
             pet.setDestinationY((int) event.getY());
         });
 
+
+
         CanvasRender render = controller.createRender(pet);
         render.start();
+
+        stage.setOnCloseRequest(event -> render.close());
 
         VBox vBox = new VBox(canvas);
         stage.setScene(new Scene(vBox));
