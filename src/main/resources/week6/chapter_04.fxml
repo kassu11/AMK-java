@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="object_oriented_programming.week_06.chapter_04.task_01.controller.NotebookController">
+   <children>
+      <GridPane hgap="5.0" layoutX="183.0" layoutY="45.0" AnchorPane.leftAnchor="185.0" AnchorPane.rightAnchor="185.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.0" minWidth="10.0" prefWidth="120.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="77.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField fx:id="noteTitleField" promptText="Note title" />
+            <TextField fx:id="noteContentField" promptText="Note content" GridPane.rowIndex="1" />
+            <Button fx:id="saveNoteButton" mnemonicParsing="false" onAction="#addNote" prefHeight="25.0" prefWidth="132.0" text="Add note" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="noteAddingStatusLabel" textFill="#00000080" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </GridPane>
+      <GridPane hgap="5.0" layoutX="185.0" layoutY="147.0" AnchorPane.leftAnchor="185.0" AnchorPane.rightAnchor="185.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="157.0" minWidth="10.0" prefWidth="120.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="79.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="List of all your notes" GridPane.columnSpan="2" />
+            <ListView fx:id="notesLisView" prefHeight="43.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+            <Button fx:id="SaveNoteButton" mnemonicParsing="false" onAction="#editNote" text="Save" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button fx:id="removeNoteButton" mnemonicParsing="false" onAction="#removeNote" text="Remove" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="loadedNoteTitleTextField" promptText="Note title" GridPane.rowIndex="2" />
+            <TextField fx:id="loadedNoteContentTextFiel" promptText="Note content" GridPane.rowIndex="3" />
+            <Label fx:id="loadedNoteStatusLabel" textFill="#00000080" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
