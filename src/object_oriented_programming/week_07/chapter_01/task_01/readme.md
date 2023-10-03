@@ -1,33 +1,29 @@
-# Assignment: A database for the Currency Converter application
+# Assignment: A database-enhanced currency converter
 
-In submodule 6.2., you designed an application for the currency converter that had a graphical user interface. In this assignment, the goal is to design a database for the application. Later, we will make the application use the database.
+In the previous assignment, you created a database for storing information about currencies. Now, you will expand your earlier currency converter application so that it uses the database.
 
-The Model of the application contains the `Currency` class, which stores for each currency the following data: the abbreviation, name, and conversion rate to a fixed currency (e.g., USD). In addition, you need to store the list of currencies somewhere, either in a Model class or in the Controller class.
+First, redesign your project structure so that you have separate packages for:
+- the user interface (the view of the application)
+- the application logic (the controller of the application)
+- the data access layer (the DAO classes)
+- the entity classes (the classes that represent the data in the database. These are probably one-to-one to your model classes.)
+- the datasource class (the class that handles the connection to the database)
 
-Now, design a database that stores the data of the `Currency` objects. Make a database script that contains the following things:
+You may modify the existing project, or create a new one. If you work on the existing project, consider creating a new branch for the new version.
 
-1. A statement for dropping the previous version of the database, if it exists.
-2. A statement for creating the database.
-3. A statement for creating a table for storing the `Currency` objects.
-4. Statements for populating the table with data. You should include at least eight currencies with up-to-date exchange rates in the table.
-5. A statement for dropping the user account `appuser`, if it exists.
-6. A statement for creating the user account `appuser`.
-7. Statements for granting the privileges to the user account `appuser`. Think of your application: what privileges does it need? The user account should have only the privileges it needs, and no more.
+Make your application connect to the database. For inspiration, check the `MariaDbConnection` class in the example above.
 
-Save the database script and run it to create the MariaDB database. Verify that it works, even if you run it more than once.
+In the earlier application, your controller class is responsible for reacting to the button presses that initiate the conversion. Now, add a `CurrencyDao` class into the `dao` package in your project. The class is responsible for communicating with the database. Add a method for retrieving the exchange rate of a currency from the database, and embed the required SQL statement into the method. The method should take the abbreviation of the currency as a parameter, and return the exchange rate as a double value.
+Modify your controller method so that it uses the values fetched from the database instead of the hard-coded values. (By the way, now is a good time to delete the hard-coded currencies from your code, if you have them.)
 
-Once the database is established, write the following SQL queries to test it:
-1. A query that retrieves all the currencies from the database.
-2. A query that retrieves the currency with the abbreviation `EUR` (or other abbreviation, if you don't have EUR in your database).
-3. A query that retrieves the number of currencies in the database.
-4. A query that retrieves the currency with the highest exchange rate.
+Prepare for errors. For instance, if the database is not available, your application should not crash. Instead, it should display an error message to the user. While testing, an easy way to simulate an error is to change the server name in the `MariaDbConnection` class to something that is not a valid server name.
 
-Do not include the queries in the database script. Instead, write them in a separate file, e.g., `queries.sql`. You can run the queries either from HeidiSQL or from the command line with the command `mysql -u root -p < queries.sql`.
+At this point, your application should work as before, but the exchange rates are fetched from the database.
 
 For this assignment, you get points as follows:
-- The script contains the statements 1-4. (1 point)
-- The script contains the statements 5-6. (1 point)
-- The script contains the statement 7. (1 point)
-- The script works correctly and can be run multiple times. (1 point)
-- The queries 1-2 work correctly. (1 point)
-- The queries 3-4 work correctly. (1 point)
+1. You have refactored your code to reflect the new project structure. (1 point)
+2. Your application successfully connects to the database. (1 point)
+3. You have created a `CurrencyDao` class that contains a method for fetching the exchange rate of a currency from the database. (1 point)
+4. Your Controller class uses the aforementioned method to successfully fetch the exchange rate. (1 point)
+5. Your application works as before (meaning: as described in the earlier GUI assignment), except for the fact that the exchange rates are fetched from the database. (1 point)
+6. Your application displays an appropriate error message in the user interface if the database is not available. (1 point)
