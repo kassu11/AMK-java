@@ -13,7 +13,6 @@ import object_oriented_programming.week_06.chapter_03.task_01.model.PetImage;
 public class CanvasView extends Application {
     private PetController controller;
     private GraphicsContext gc;
-    private PetImage pet;
 
     public void start(Stage stage) {
         stage.setTitle("Canvas View");
