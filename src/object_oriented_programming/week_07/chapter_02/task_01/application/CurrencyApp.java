@@ -1,18 +1,13 @@
-package object_oriented_programming.week_07.chapter_02.task_01.controller;
+package object_oriented_programming.week_07.chapter_02.task_01.application;
 
-import object_oriented_programming.week_07.chapter_02.task_01.datasource.MariaDbConnection;
 import object_oriented_programming.week_07.chapter_02.task_01.dao.CurrencyDao;
 import object_oriented_programming.week_07.chapter_02.task_01.view.CurrencyView;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-
-public class CurrencyController {
+public class CurrencyApp {
     private CurrencyView view;
     private CurrencyDao currency;
 
-    public CurrencyController(CurrencyView view) {
+    public CurrencyApp(CurrencyView view) {
         this.view = view;
         this.currency = new CurrencyDao(this);
     }

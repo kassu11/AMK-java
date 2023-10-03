@@ -10,10 +10,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import object_oriented_programming.week_07.chapter_02.task_01.controller.CurrencyController;
+import object_oriented_programming.week_07.chapter_02.task_01.application.CurrencyApp;
 import object_oriented_programming.week_07.chapter_02.task_01.dao.CurrencyDao;
-
-import java.util.List;
 
 public class CurrencyView extends Application {
     private final ToggleGroup startGroup = new ToggleGroup();
@@ -25,7 +23,7 @@ public class CurrencyView extends Application {
     private CurrencyDao currency;
 
 
-    private CurrencyController controller;
+    private CurrencyApp controller;
 
     public void start(Stage stage) {
         stage.setTitle("Currency Converter.");
@@ -99,7 +97,7 @@ public class CurrencyView extends Application {
     }
 
     public void init() {
-        controller = new CurrencyController(this);
+        controller = new CurrencyApp(this);
         currency = controller.getCurrency();
     }
 

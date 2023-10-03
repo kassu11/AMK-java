@@ -1,6 +1,6 @@
 package object_oriented_programming.week_07.chapter_02.task_01.dao;
 
-import object_oriented_programming.week_07.chapter_02.task_01.controller.CurrencyController;
+import object_oriented_programming.week_07.chapter_02.task_01.application.CurrencyApp;
 import object_oriented_programming.week_07.chapter_02.task_01.datasource.MariaDbConnection;
 
 import java.sql.Connection;
@@ -15,9 +15,9 @@ public class CurrencyDao {
     private Map<String, Double> currencies = new HashMap<>();
     private Map<String, String> symbols = new HashMap<>();
     private List<String> currencyList = new ArrayList<>();
-    private CurrencyController controller;
+    private CurrencyApp controller;
 
-    public CurrencyDao(CurrencyController controller) {
+    public CurrencyDao(CurrencyApp controller) {
         this.controller = controller;
         Connection conn = MariaDbConnection.getInstance(controller);
 

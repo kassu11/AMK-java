@@ -1,7 +1,7 @@
 package object_oriented_programming.week_07.chapter_02.task_01.datasource;
 
 
-import object_oriented_programming.week_07.chapter_02.task_01.controller.CurrencyController;
+import object_oriented_programming.week_07.chapter_02.task_01.application.CurrencyApp;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,9 +10,9 @@ import java.sql.SQLException;
 public class MariaDbConnection {
 
     private static Connection conn = null;
-    private static CurrencyController controller;
+    private static CurrencyApp controller;
 
-    public static Connection getInstance(CurrencyController controllerVar) {
+    public static Connection getInstance(CurrencyApp controllerVar) {
         controller = controllerVar;
         if (conn == null) {
             // connect if necessary
