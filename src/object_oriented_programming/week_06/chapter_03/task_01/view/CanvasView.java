@@ -1,14 +1,13 @@
 package object_oriented_programming.week_06.chapter_03.task_01.view;
 
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import object_oriented_programming.week_06.chapter_03.task_01.controller.PetController;
-import object_oriented_programming.week_06.chapter_03.task_01.model.CanvasRender;
 import object_oriented_programming.week_06.chapter_03.task_01.model.PetImage;
 
 public class CanvasView extends Application {
@@ -29,12 +28,14 @@ public class CanvasView extends Application {
             pet.setDestinationY((int) event.getY());
         });
 
-
-
-        CanvasRender render = controller.createRender(pet);
-        render.start();
-
-        stage.setOnCloseRequest(event -> render.close());
+        AnimationTimer timer = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                pet.movePet();
+                renderPet(pet);
+            }
+        };
+        timer.start();
 
         VBox vBox = new VBox(canvas);
         stage.setScene(new Scene(vBox));

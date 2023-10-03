@@ -1,6 +1,5 @@
 package object_oriented_programming.week_06.chapter_03.task_01.controller;
 
-import object_oriented_programming.week_06.chapter_03.task_01.model.CanvasRender;
 import object_oriented_programming.week_06.chapter_03.task_01.model.PetImage;
 import object_oriented_programming.week_06.chapter_03.task_01.view.CanvasView;
 
@@ -13,10 +12,6 @@ public class PetController {
 
     public PetImage createPet(String path, int x, int y, int width, int height) {
         return new PetImage(path, x, y, width, height);
-    }
-
-    public CanvasRender createRender(PetImage pet) {
-        return new CanvasRender(pet, view);
     }
 
     public static void main(String[] args) {
