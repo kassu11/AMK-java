@@ -1,6 +1,5 @@
 package object_oriented_programming.week_07.chapter_03.task_01.view;
 
-
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -12,6 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import object_oriented_programming.week_07.chapter_03.task_01.application.CurrencyApp;
 import object_oriented_programming.week_07.chapter_03.task_01.dao.CurrencyDao;
+import object_oriented_programming.week_07.chapter_03.task_01.entity.Currency;
 
 public class CurrencyView extends Application {
     private final ToggleGroup startGroup = new ToggleGroup();
@@ -62,7 +62,7 @@ public class CurrencyView extends Application {
 
             try {
                 double startingValue = Double.parseDouble(startValue);
-//                controller.convert(startingValue, startCurrency, endCurrency);
+                controller.convertCurrency(startingValue, startCurrency, endCurrency);
                 errorLabel.setText("");
             } catch (NumberFormatException e) {
                 System.out.println("The search field is not a number");
@@ -97,21 +97,20 @@ public class CurrencyView extends Application {
     }
 
     public void init() {
-//        controller = new CurrencyApp(this);
-//        currency = controller.getCurrency();
+        controller = new CurrencyApp(this);
     }
 
     public VBox currencySettings(VBox container, String header, ToggleGroup group) {
         container.getChildren().clear();
         container.getChildren().add(new Label(header));
 
-//        for (String currency : currency.getCurrencies()) {
-//            RadioButton radioButton = new RadioButton(currency);
-//            radioButton.setUserData(currency);
-//            radioButton.setToggleGroup(group);
-//            radioButton.setSelected(true);
-//            container.getChildren().add(radioButton);
-//        }
+        for (Currency currency : controller.getAllCurrencies()) {
+            RadioButton radioButton = new RadioButton(currency.getIso());
+            radioButton.setUserData(currency.getIso());
+            radioButton.setToggleGroup(group);
+            radioButton.setSelected(true);
+            container.getChildren().add(radioButton);
+        }
 
         return container;
     }
@@ -120,7 +119,7 @@ public class CurrencyView extends Application {
         errorLabel.setText(message);
     }
 
-    public void convertAnswer(String answer) {
+    public void setEndCurrencyTextField(String answer) {
         endCurrencyTextField.setText(answer);
     }
 }

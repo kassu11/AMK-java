@@ -1,8 +1,11 @@
 package object_oriented_programming.week_07.chapter_03.task_01.dao;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import object_oriented_programming.week_07.chapter_03.task_01.datasource.MariaDbJpaConnection;
 import object_oriented_programming.week_07.chapter_03.task_01.entity.Currency;
+
+import java.util.List;
 
 public class CurrencyDao {
 
@@ -34,5 +37,12 @@ public class CurrencyDao {
         em.getTransaction().begin();
         em.remove(currency);
         em.getTransaction().commit();
+    }
+
+    public List<Currency> getAll() {
+        EntityManager em = MariaDbJpaConnection.getInstance();
+        TypedQuery<Currency> query = em.createQuery("SELECT c FROM Currency c", Currency.class);
+        List<Currency> currencies = query.getResultList();
+        return currencies;
     }
 }
