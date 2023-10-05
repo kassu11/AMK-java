@@ -63,6 +63,7 @@ public class CurrencyView extends Application {
             try {
                 double startingValue = Double.parseDouble(startValue);
                 controller.convertCurrency(startingValue, startCurrency, endCurrency);
+                controller.addTransaction(startCurrency, endCurrency, startingValue);
                 errorLabel.setText("");
             } catch (NumberFormatException e) {
                 System.out.println("The search field is not a number");

@@ -28,7 +28,7 @@ INSERT INTO currency (ISO, symbol, rate) VALUES
 DROP USER IF EXISTS 'appuser'@'localhost';
 CREATE USER 'appuser'@'localhost' IDENTIFIED BY 'curPass123';
 GRANT SELECT, INSERT, DELETE, UPDATE ON currencies.currency TO 'appuser'@'localhost';
-
+GRANT INSERT ON currencies.transactions TO 'appuser'@'localhost';
 
 -- Testing
 SELECT * FROM currencies.currency;

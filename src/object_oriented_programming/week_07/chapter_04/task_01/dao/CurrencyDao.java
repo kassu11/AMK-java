@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import object_oriented_programming.week_07.chapter_04.task_01.datasource.MariaDbJpaConnection;
 import object_oriented_programming.week_07.chapter_04.task_01.entity.Currency1;
+import object_oriented_programming.week_07.chapter_04.task_01.entity.Transaction;
 
 import java.util.List;
 
@@ -44,5 +45,12 @@ public class CurrencyDao {
         TypedQuery<Currency1> query = em.createQuery("SELECT c FROM Currency1 c", Currency1.class);
         List<Currency1> currencies = query.getResultList();
         return currencies;
+    }
+
+    public void persistTransaction(Transaction transaction) {
+        EntityManager em = MariaDbJpaConnection.getInstance();
+        em.getTransaction().begin();
+        em.persist(transaction);
+        em.getTransaction().commit();
     }
 }

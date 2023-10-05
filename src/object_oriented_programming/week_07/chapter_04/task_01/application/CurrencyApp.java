@@ -1,6 +1,7 @@
 package object_oriented_programming.week_07.chapter_04.task_01.application;
 
 import object_oriented_programming.week_07.chapter_04.task_01.entity.Currency1;
+import object_oriented_programming.week_07.chapter_04.task_01.entity.Transaction;
 import object_oriented_programming.week_07.chapter_04.task_01.view.CurrencyView;
 import object_oriented_programming.week_07.chapter_04.task_01.dao.CurrencyDao;
 
@@ -47,6 +48,10 @@ public class CurrencyApp {
 
     public void addCurrency(String iso, String symbol, double rate) {
         dao.persist(new Currency1(iso, symbol, rate));
+    }
+
+    public void addTransaction(String iso, String symbol, double rate) {
+        dao.persistTransaction(new Transaction(iso, symbol, rate));
     }
 
 }
