@@ -70,23 +70,86 @@ public class CurrencyView extends Application {
             }
         });
 
-        VBox helpContainer = new VBox();
-        helpContainer.setSpacing(5);
-        helpContainer.paddingProperty().setValue(new Insets(16));
-        Label helpHeader = new Label("How to Use the Currency Converter:");
-        helpHeader.getStyleClass().add("help-header");
-        helpContainer.setAlignment(Pos.CENTER);
-        helpContainer.getChildren().addAll(
-                helpHeader,
-                new Label("1. Input the amount you want to convert in the first field."),
-                new Label("2. Use the radio button menus to choose your source and target currencies."),
-                new Label("3. Click the \"Convert\" button to see the converted amount in the second field.")
-        );
+        Button addNewCurrencyButton = new Button("Add new currency");
+        addNewCurrencyButton.setOnAction(event -> {
+            Stage popupStage = new Stage();
+            GridPane popupGridPane = new GridPane();
+            Label isoLabel = new Label("ISO: ");
+            TextField isoTextField = new TextField();
+            Label symbolLabel = new Label("Symbol: ");
+            TextField symbolTextField = new TextField();
+            Label rateLabel = new Label("Rate: (1 USD = ) ");
+            TextField rateTextField = new TextField();
+            Button addButton = new Button("Add");
+            Button closeButton = new Button("Close");
+            Label popupErrorLabel = new Label();
+
+            popupGridPane.add(isoLabel, 0, 0);
+            popupGridPane.add(isoTextField, 1, 0);
+            popupGridPane.add(symbolLabel, 0, 1);
+            popupGridPane.add(symbolTextField, 1, 1);
+            popupGridPane.add(rateLabel, 0, 2);
+            popupGridPane.add(rateTextField, 1, 2);
+            popupGridPane.add(addButton, 1, 3);
+            popupGridPane.add(closeButton, 2, 3);
+            popupGridPane.add(popupErrorLabel, 1, 4, 3, 1);
+            popupGridPane.setPadding(new Insets(16));
+            popupGridPane.setVgap(10);
+            popupGridPane.setHgap(5);
+
+            addButton.setOnAction(event1 -> {
+                String iso = isoTextField.getText();
+                String symbol = symbolTextField.getText();
+                String rate = rateTextField.getText();
+                if(iso.length() > 3) {
+                    System.out.println("The ISO code is too long");
+                    popupErrorLabel.setText("The ISO code is too long");
+                    return;
+                }
+                if (iso.isEmpty()) {
+                    System.out.println("The ISO code is empty");
+                    popupErrorLabel.setText("The ISO code is empty");
+                    return;
+                }
+                if (symbol.isEmpty()) {
+                    System.out.println("The symbol is empty");
+                    popupErrorLabel.setText("The symbol is empty");
+                    return;
+                }
+                if (rate.isEmpty()) {
+                    System.out.println("The rate is empty");
+                    popupErrorLabel.setText("The rate is empty");
+                    return;
+                }
+
+                try {
+                    double rateValue = Double.parseDouble(rate);
+                    controller.addCurrency(iso, symbol, rateValue);
+                    popupErrorLabel.setText("Currency added successfully");
+
+                    currencySettings(startingCurrencyContainer, "Choose a source currency: ", startGroup);
+                    currencySettings(endingCurrencyContainer, "Choose a target currency: ", endGroup);
+                } catch (NumberFormatException e) {
+                    System.out.println("The rate field is not a number");
+                    popupErrorLabel.setText("The rate field is not a number");
+                }
+            });
+
+            closeButton.setOnAction(event2 -> {
+                popupStage.close();
+            });
+
+            Scene popupScene = new Scene(popupGridPane);
+            popupStage.setScene(popupScene);
+            popupStage.showAndWait();
+        });
+
+
 
         VBox mainContainer = new VBox();
         mainContainer.setSpacing(25);
         mainContainer.paddingProperty().setValue(new Insets(16));
-        mainContainer.getChildren().addAll(currencyContainer, errorLabel, gridPane, helpContainer);
+        mainContainer.getChildren().addAll(currencyContainer, addNewCurrencyButton, errorLabel, gridPane);
         errorLabel.getStyleClass().add("error-label");
 
 

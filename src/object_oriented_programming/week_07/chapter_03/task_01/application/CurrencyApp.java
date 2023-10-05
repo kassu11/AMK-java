@@ -45,4 +45,8 @@ public class CurrencyApp {
         view.setEndCurrencyTextField(String.format("%s %.2f", end.getSymbol(), result));
     }
 
+    public void addCurrency(String iso, String symbol, double rate) {
+        dao.persist(new Currency(iso, symbol, rate));
+    }
+
 }
