@@ -1,0 +1,1 @@
+# Task 1: Calculate mean of an array in functional way (e.g. no `for`-loops)
